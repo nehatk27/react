@@ -1,18 +1,27 @@
+import type { Issue } from "../../types/issue";
 import Avatar from "../Avatar";
 import Badge from "./Badge";
 
 type IssueCardProps = {
-  username: string;
-  title: string;
-  status: string;
+  issue: Issue;
 };
 
-function IssueCard({ username, title, status }: IssueCardProps) {
+function IssueCard({ issue }: IssueCardProps) {
+  const issueDueDate = new Date(issue.dueDate);
+  const isOverdue = issueDueDate < new Date() && issue.status !== "Closed";
+
   return (
     <article>
-      <Avatar name={username} />
-      <h2>{title}</h2>
-      <Badge label={status} />
+      <Avatar name={issue.assigneeName} />
+
+      <div className="issue-content">
+        <h3>{issue.title}</h3>
+        <p>Priority: {issue.priority}</p>
+        <p>Due date: {issue.dueDate}</p>
+        {isOverdue && <p>Overdue!</p>}
+      </div>
+
+      <Badge label={issue.status} />
     </article>
   );
 }
