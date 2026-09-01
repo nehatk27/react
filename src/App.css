@@ -1,0 +1,182 @@
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+  font-size: 24px;
+}
+
+/* Main layout */
+
+.mainSection {
+  display: flex;
+  flex: 1;
+}
+
+/* Sidebar */
+
+.sidebar {
+  width: 220px;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar a {
+  color: #333;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.sidebar a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Dashboard */
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin: 0;
+}
+
+main > h1 {
+  margin-top: 0;
+}
+
+/* Sections */
+
+section {
+  margin-bottom: 32px;
+}
+
+section > h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+/* Projects */
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.projects article {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.projects article h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.projects article p {
+  color: #555;
+}
+
+/* Issues */
+
+.issues {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.issues article {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.issues article h2 {
+  flex: 1;
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Avatar */
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* Badge */
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: antiquewhite;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .mainSection {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: auto;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .sidebar nav {
+    flex-direction: row;
+  }
+
+  .projects {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
