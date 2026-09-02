@@ -130,6 +130,52 @@ section > h2 {
   color: #555;
 }
 
+/* Issue controls */
+
+section > input,
+section > select {
+  padding: 8px 10px;
+  margin-right: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+button {
+  padding: 8px 12px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+form {
+  margin: 16px 0 24px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+form p {
+  margin-top: 0;
+  font-weight: 600;
+}
+
+form input,
+form select {
+  padding: 8px 10px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 /* Avatar */
 
 .avatar {
@@ -172,5 +218,17 @@ section > h2 {
 
   .projects {
     grid-template-columns: 1fr;
+  }
+
+  section > input,
+  section > select,
+  form input,
+  form select {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  form button {
+    width: 100%;
   }
 }

@@ -25,6 +25,14 @@ const issues: Issue[] = [
     priority: "Low",
     dueDate: "2026-09-05",
   },
+  {
+    id: "i4",
+    title: "Issue with settings data",
+    assigneeName: "Aami",
+    status: "Open",
+    priority: "Medium",
+    dueDate: "2026-09-08",
+  },
 ];
 
 export default issues;
