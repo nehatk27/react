@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import initialIssues from "../../data/issues";
 import IssueCard from "./IssueCard";
+import IssueForm from "./IssueForm";
 import EmptyState from "../EmptyState";
-import type { Issue } from "../../types/issue";
+import type { Issue, IssueFormData } from "../../types/issue";
 
 function IssuesSection() {
   const [issues, setIssues] = useState(initialIssues);
@@ -11,12 +12,6 @@ function IssuesSection() {
   const [statusFilter, setStatusFilter] = useState("All");
   const [priorityFilter, setPriorityFilter] = useState("All");
   const [sort, setSortOption] = useState("None");
-
-  const [title, setTitle] = useState("");
-  const [assigneeName, setAssigneeName] = useState("");
-  const [status, setStatus] = useState<Issue["status"]>("Open");
-  const [priority, setPriority] = useState<Issue["priority"]>("Medium");
-  const [dueDate, setDueDate] = useState("");
 
   const filteredIssues = issues.filter((issue) => {
     const matchesSearch = issue.title
@@ -55,26 +50,11 @@ function IssuesSection() {
     setSortOption("None");
   }
 
-  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    const newIssue: Issue = {
-      id: crypto.randomUUID(),
-      title,
-      assigneeName,
-      status,
-      priority,
-      dueDate,
-    };
-
-    setIssues([...issues, newIssue]);
-
-    //resetting form entries
-    setTitle("");
-    setAssigneeName("");
-    setStatus("Open");
-    setPriority("Medium");
-    setDueDate("");
+  function handleIssueSubmit(issue: IssueFormData) {
+    setIssues((currentIssues) => [
+      ...currentIssues,
+      { id: crypto.randomUUID(), ...issue },
+    ]);
   }
 
   return (
@@ -120,49 +100,7 @@ function IssuesSection() {
         Clear filters
       </button>
 
-      <form onSubmit={handleSubmit}>
-        <p>Add new Issue:</p>
-        <input
-          type="text"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-          placeholder="enter the issue title"
-        />
-        <input
-          type="text"
-          value={assigneeName}
-          onChange={(event) => setAssigneeName(event.target.value)}
-          placeholder="enter the assignee name"
-        />
-        <select
-          name="status"
-          value={status}
-          onChange={(event) => setStatus(event.target.value as Issue["status"])}
-        >
-          <option value="Open">Open</option>
-          <option value="In-progress">In-progress</option>
-          <option value="Closed">Closed</option>
-        </select>
-        <select
-          name="priority"
-          value={priority}
-          onChange={(event) =>
-            setPriority(event.target.value as unknown as Issue["priority"])
-          }
-        >
-          <option value="High">High</option>
-          <option value="Medium">Medium</option>
-          <option value="Low">Low</option>
-        </select>
-
-        <input
-          type="date"
-          value={dueDate}
-          onChange={(event) => setDueDate(event.target.value)}
-          placeholder="enter the due date"
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <IssueForm onSubmit={handleIssueSubmit} />
 
       <div className="issues">
         {sortedIssues.length === 0 ? (
