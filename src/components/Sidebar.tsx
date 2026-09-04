@@ -1,11 +1,22 @@
+import { NavLink } from "react-router";
+
 function Sidebar() {
   return (
     <aside className="sidebar">
       <h2>Goto:</h2>
       <nav>
-        <a>Dashboard</a>
-        <a>Projects</a>
-        <a>Issues</a>
+        <NavLink to="/" end>
+          Dashboard
+        </NavLink>
+        <NavLink to="/projects" end>
+          Projects
+        </NavLink>
+        <NavLink to="/issues" end>
+          Issues
+        </NavLink>
+        <NavLink to="/profile" end>
+          Profile
+        </NavLink>
       </nav>
     </aside>
   );

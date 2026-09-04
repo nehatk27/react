@@ -1,6 +1,7 @@
+import { Outlet } from "react-router";
+
 import "./App.css";
 import Header from "./components/Header";
-import Dashboard from "./components/Dashboard";
 import Sidebar from "./components/Sidebar";
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
       <Header />
       <div className="mainSection">
         <Sidebar />
-        <Dashboard />
+        <Outlet />
       </div>
     </div>
   );

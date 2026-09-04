@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import type { Issue } from "../../types/issue";
 import Avatar from "../Avatar";
 import Badge from "./Badge";
@@ -19,6 +20,7 @@ function IssueCard({ issue }: IssueCardProps) {
         <p>Priority: {issue.priority}</p>
         <p>Due date: {issue.dueDate}</p>
         {isOverdue && <p>Overdue!</p>}
+        <Link to={`/issues/${issue.id}`}>View details</Link>
       </div>
 
       <Badge label={issue.status} />

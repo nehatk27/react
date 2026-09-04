@@ -59,7 +59,7 @@ function IssuesSection() {
 
   return (
     <section>
-      <h2>Issues:</h2>
+      <h2>Existing Issues are:</h2>
       <input
         type="search"
         name="search"
@@ -100,8 +100,6 @@ function IssuesSection() {
         Clear filters
       </button>
 
-      <IssueForm onSubmit={handleIssueSubmit} />
-
       <div className="issues">
         {sortedIssues.length === 0 ? (
           <EmptyState />
@@ -111,6 +109,8 @@ function IssuesSection() {
           ))
         )}
       </div>
+
+      <IssueForm onSubmit={handleIssueSubmit} />
     </section>
   );
 }

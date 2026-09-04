@@ -1,26 +1,28 @@
 import ProjectCard from "./ProjectCard";
+import projects from "../../data/projects";
+import issues from "../../data/issues";
 
 function ProjectsSection() {
   return (
     <section>
-      <h2>Projects Section</h2>
+      <h2>These are the existing projects:</h2>
 
       <div className="projects">
-        <ProjectCard
-          name="Demotitle"
-          description="Demodescription"
-          issueCount={2}
-        />
-        <ProjectCard
-          name="Demotitle2"
-          description="Demodescription2"
-          issueCount={4}
-        />
-        <ProjectCard
-          name="Demotitle3"
-          description="Demodescription3"
-          issueCount={1}
-        />
+        {projects.length === 0 ? (
+          <h3>No projects found!</h3>
+        ) : (
+          projects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              id={project.id}
+              name={project.name}
+              description={project.description}
+              issueCount={
+                issues.filter((issue) => issue.project === project.name).length
+              }
+            />
+          ))
+        )}
       </div>
     </section>
   );
