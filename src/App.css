@@ -1,0 +1,315 @@
+#root {
+  margin: 0;
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+
+header {
+  height: 65px;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+  font-size: 24px;
+}
+
+/* Main layout */
+
+.mainSection {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Sidebar */
+
+.sidebar {
+  min-height: calc(100vh - 65px);
+  width: 220px;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar a {
+  color: #333;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.sidebar a:hover {
+  background-color: #f1f1f1;
+}
+
+.sidebar a.active {
+  background-color: #8d8d8d;
+  color: white;
+}
+
+/* Dashboard */
+
+main {
+  flex: 1;
+  padding: 20px;
+  margin: 0;
+}
+
+main > h1 {
+  margin-top: 0;
+}
+
+main a {
+  display: inline-block;
+  margin-right: 12px;
+  color: #333;
+}
+
+/* Sections */
+
+section {
+  margin-bottom: 32px;
+}
+
+section > h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+/* Projects */
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.projects article {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.projects article h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.projects article p {
+  color: #555;
+}
+
+.projects article span {
+  display: block;
+  margin-bottom: 10px;
+  color: #555;
+  /* font-size: 14px; */
+}
+
+/* Issues */
+
+.issues {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.issues article {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.issue-content {
+  flex: 1;
+}
+
+.issue-content h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.issue-content p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Issue controls */
+
+section > input,
+section > select {
+  padding: 8px 10px;
+  margin-right: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+button {
+  padding: 8px 12px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Issue Form */
+.issue-form {
+  margin: 16px 0 24px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  max-width: 700px;
+}
+
+.form-heading {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.issue-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.issue-form input,
+.issue-form select,
+.issue-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.issue-form textarea {
+  min-height: 50px;
+  resize: vertical;
+}
+
+.issue-form button {
+  margin-right: 8px;
+}
+
+.issue-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.field-error {
+  margin: 0 0 12px;
+  color: #b42318;
+  font-size: 13px;
+}
+
+.error-summary {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border: 1px solid #f0b4b4;
+  border-radius: 6px;
+  background-color: #fff7f7;
+}
+
+.error-summary p {
+  margin-bottom: 8px;
+  color: #b42318;
+}
+
+.error-summary ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #b42318;
+}
+
+.error-summary li {
+  margin-bottom: 4px;
+}
+
+/* Avatar */
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* Badge */
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: antiquewhite;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .mainSection {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: auto;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .sidebar nav {
+    flex-direction: row;
+  }
+
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
+  section > input,
+  section > select,
+  form input,
+  form select {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .issue-form button {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+}
