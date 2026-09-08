@@ -1,12 +1,3 @@
-// import app from "./app.js";
-
-// const PORT = 3000;
-
-// app.listen(PORT, () => {
-//   console.log(`Server running on https://localhost:${PORT}`);
-// });
-
-
 import app from "./app.js";
 import { prisma } from "./lib/prisma.js";
 
