@@ -2,7 +2,7 @@ import type { Issue } from "../types/issue";
 
 const issues: Issue[] = [
   {
-    id: "i1",
+    id: 1,
     title: "Fix login bug",
     description: "Resolve the login bug.",
     project: "Authentication",
@@ -13,18 +13,18 @@ const issues: Issue[] = [
     labels: [],
   },
   {
-    id: "i2",
+    id: 2,
     title: "Authentication issue",
     description: "Investigate the authentication issue.",
     project: "Authentication",
     assigneeName: "Varsha",
-    status: "In-progress",
+    status: "InProgress",
     priority: "Medium",
     dueDate: "2026-09-10",
     labels: [],
   },
   {
-    id: "i3",
+    id: 3,
     title: "Darkmode not rendering",
     description: "Fix dark mode rendering.",
     project: "UI",
@@ -35,7 +35,7 @@ const issues: Issue[] = [
     labels: [],
   },
   {
-    id: "i4",
+    id: 4,
     title: "Issue with settings data",
     description: "Resolve the settings data issue.",
     project: "Settings",

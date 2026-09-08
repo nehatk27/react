@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 
 type ProjectCardProps = {
-  id: string;
+  id: number;
   name: string;
   description: string;
   issueCount: number;

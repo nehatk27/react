@@ -3,7 +3,7 @@ import issues from "../data/issues";
 
 function IssueDetails() {
   const { id } = useParams();
-  const issue = issues.find((issue) => issue.id === id);
+  const issue = issues.find((issue) => issue.id === Number(id));
   if (!issue) {
     return (
       <main>

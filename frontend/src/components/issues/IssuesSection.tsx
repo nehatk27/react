@@ -1,12 +1,15 @@
 import { useState } from "react";
 
-import initialIssues from "../../data/issues";
 import IssueCard from "./IssueCard";
 import IssueForm from "./IssueForm";
 import EmptyState from "../EmptyState";
 import type { Issue, IssueFormData } from "../../types/issue";
 
-function IssuesSection() {
+type IssuesSectionProps = {
+  initialIssues: Issue[];
+};
+
+function IssuesSection({ initialIssues }: IssuesSectionProps) {
   const [issues, setIssues] = useState(initialIssues);
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
@@ -53,7 +56,7 @@ function IssuesSection() {
   function handleIssueSubmit(issue: IssueFormData) {
     setIssues((currentIssues) => [
       ...currentIssues,
-      { id: crypto.randomUUID(), ...issue },
+      { id: Date.now(), ...issue },
     ]);
   }
 
@@ -74,7 +77,7 @@ function IssuesSection() {
       >
         <option value="All">All</option>
         <option value="Open">Open</option>
-        <option value="In-progress">In-progress</option>
+        <option value="InProgress">InProgress</option>
         <option value="Closed">Closed</option>
       </select>
       <select

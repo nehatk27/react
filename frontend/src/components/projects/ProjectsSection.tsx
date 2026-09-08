@@ -1,8 +1,11 @@
 import ProjectCard from "./ProjectCard";
-import projects from "../../data/projects";
-import issues from "../../data/issues";
+import type { ProjectResponse } from "../../api/projects";
 
-function ProjectsSection() {
+type ProjectsSectionProps = {
+  projects: ProjectResponse[];
+};
+
+function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
     <section>
       <h2>These are the existing projects:</h2>
@@ -17,9 +20,7 @@ function ProjectsSection() {
               id={project.id}
               name={project.name}
               description={project.description}
-              issueCount={
-                issues.filter((issue) => issue.project === project.name).length
-              }
+              issueCount={project.issueCount}
             />
           ))
         )}
