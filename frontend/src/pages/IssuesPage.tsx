@@ -1,43 +1,11 @@
-import { useEffect, useState } from "react";
 import IssuesSection from "../components/issues/IssuesSection";
-import { getIssues, type IssueResponse } from "../api/issues";
-import type { Issue } from "../types/issue";
+import useDocumentTitle from "../hooks/useDocumentTitle";
+import useIssues from "../hooks/useIssues";
 
 function IssuesPage() {
-  const [issues, setIssues] = useState<Issue[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  useDocumentTitle("Issues");
 
-  async function fetchIssues() {
-    try {
-      setIsLoading(true);
-      setError(null);
-
-      const data = await getIssues();
-
-      const mappedIssues: Issue[] = data.map((issue: IssueResponse) => ({
-        id: issue.id,
-        title: issue.title,
-        description: issue.description,
-        project: issue.project,
-        assigneeName: issue.assigneeName,
-        status: issue.status,
-        priority: issue.priority,
-        dueDate: issue.dueDate,
-        labels: issue.labels,
-      }));
-
-      setIssues(mappedIssues);
-    } catch {
-      setError("Failed to load issues.");
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    fetchIssues();
-  }, []);
+  const { issues, isLoading, error, retry } = useIssues();
 
   if (isLoading) {
     return (
@@ -53,7 +21,7 @@ function IssuesPage() {
       <main>
         <h1>Issues</h1>
         <p>{error}</p>
-        <button onClick={fetchIssues}>Retry</button>
+        <button onClick={retry}>Retry</button>
       </main>
     );
   }

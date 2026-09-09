@@ -4,6 +4,7 @@ import IssueCard from "./IssueCard";
 import IssueForm from "./IssueForm";
 import EmptyState from "../EmptyState";
 import type { Issue, IssueFormData } from "../../types/issue";
+import useDebounce from "../../hooks/useDebounce";
 
 type IssuesSectionProps = {
   initialIssues: Issue[];
@@ -16,10 +17,12 @@ function IssuesSection({ initialIssues }: IssuesSectionProps) {
   const [priorityFilter, setPriorityFilter] = useState("All");
   const [sort, setSortOption] = useState("None");
 
+  const debouncedSearch = useDebounce(search, 300);
+
   const filteredIssues = issues.filter((issue) => {
     const matchesSearch = issue.title
       .toLowerCase()
-      .includes(search.toLowerCase());
+      .includes(debouncedSearch.toLowerCase());
     const matchesStatus =
       statusFilter === "All" || issue.status === statusFilter;
     const matchesPriority =

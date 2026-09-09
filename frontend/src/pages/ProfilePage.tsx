@@ -1,4 +1,8 @@
+import useDocumentTitle from "../hooks/useDocumentTitle";
+
 function ProfilePage() {
+  useDocumentTitle("Profile");
+
   return (
     <main>
       <h2>Profile</h2>

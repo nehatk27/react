@@ -10,3 +10,7 @@ export type ProjectResponse = {
 export function getProjects() {
   return apiClient<ProjectResponse[]>("/projects");
 }
+
+export function getProject(id: number) {
+  return apiClient<ProjectResponse>(`/projects/${id}`);
+}

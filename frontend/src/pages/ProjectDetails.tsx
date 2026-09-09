@@ -1,10 +1,31 @@
 import { useParams } from "react-router";
-import projects from "../data/projects";
+import useProject from "../hooks/useProject";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 function ProjectDetails() {
+  useDocumentTitle("Project Details");
   const { id } = useParams();
+  const projectId = id ? Number(id) : undefined;
+  const { project, isLoading, error, retry } = useProject(projectId);
 
-  const project = projects.find((project) => project.id === id);
+  if (isLoading) {
+    return (
+      <main>
+        <h2>Project details:</h2>
+        <p>Loading project..</p>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main>
+        <h2>Project Details</h2>
+        <p>{error}</p>
+        <button onClick={retry}>Retry</button>
+      </main>
+    );
+  }
 
   if (!project) {
     return (
@@ -21,7 +42,6 @@ function ProjectDetails() {
       <p>ID: {project.id}</p>
       <p>Name: {project.name}</p>
       <p>Description: {project.description}</p>
-      <p></p>
     </main>
   );
 }

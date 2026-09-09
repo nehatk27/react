@@ -1,29 +1,11 @@
-import { useEffect, useState } from "react";
 import ProjectsSection from "../components/projects/ProjectsSection";
-import { getProjects, type ProjectResponse } from "../api/projects";
+import useDocumentTitle from "../hooks/useDocumentTitle";
+import useProjects from "../hooks/useProjects";
 
 function ProjectsPage() {
-  const [projects, setProjects] = useState<ProjectResponse[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  useDocumentTitle("Projects");
 
-  async function fetchProjects() {
-    try {
-      setIsLoading(true);
-      setError(null);
-
-      const data = await getProjects();
-      setProjects(data);
-    } catch {
-      setError("Failed to load projects.");
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    fetchProjects();
-  }, []);
+  const { projects, isLoading, error, retry } = useProjects();
 
   if (isLoading) {
     return (
@@ -39,7 +21,7 @@ function ProjectsPage() {
       <main>
         <h1>Projects</h1>
         <p>{error}</p>
-        <button onClick={fetchProjects}>Retry</button>
+        <button onClick={retry}>Retry</button>
       </main>
     );
   }

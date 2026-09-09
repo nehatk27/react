@@ -12,4 +12,19 @@ export async function findAllProjects() {
   });
 }
 
+export async function findProjectById(id: number) {
+  return await prisma.project.findUnique({
+    where: {
+      id,
+    },
+    include: {
+      _count: {
+        select: {
+          issues: true,
+        },
+      },
+    },
+  });
+}
+
 export default findAllProjects;

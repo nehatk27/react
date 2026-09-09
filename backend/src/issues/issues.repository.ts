@@ -8,4 +8,15 @@ export async function findAllIssues() {
   });
 }
 
+export async function findIssueById(id: number) {
+  return await prisma.issue.findUnique({
+    where: {
+      id,
+    },
+    include: {
+      project: true,
+    },
+  });
+}
+
 export default findAllIssues;

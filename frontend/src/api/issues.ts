@@ -16,3 +16,7 @@ export type IssueResponse = {
 export function getIssues() {
   return apiClient<IssueResponse[]>("/issues");
 }
+
+export function getIssue(id: number) {
+  return apiClient<IssueResponse>(`/issues/${id}`);
+}
