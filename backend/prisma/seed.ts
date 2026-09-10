@@ -1,6 +1,34 @@
+import bcrypt from "bcrypt";
 import { prisma } from "../src/lib/prisma.js";
 
 async function main() {
+  // Clear existing development data
+  await prisma.issue.deleteMany();
+  await prisma.project.deleteMany();
+  await prisma.user.deleteMany();
+
+  // Create users
+  const userPassword = await bcrypt.hash("password123", 10);
+  const adminPassword = await bcrypt.hash("admin123", 10);
+
+  await prisma.user.createMany({
+    data: [
+      {
+        name: "Neha",
+        email: "neha@example.com",
+        password: userPassword,
+        role: "User",
+      },
+      {
+        name: "Admin",
+        email: "admin@example.com",
+        password: adminPassword,
+        role: "Admin",
+      },
+    ],
+  });
+
+  // Create projects
   const authentication = await prisma.project.create({
     data: {
       name: "Authentication",
@@ -22,6 +50,7 @@ async function main() {
     },
   });
 
+  // Create issues
   await prisma.issue.createMany({
     data: [
       {

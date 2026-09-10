@@ -25,3 +25,11 @@ export const IssuePriority = {
 } as const
 
 export type IssuePriority = (typeof IssuePriority)[keyof typeof IssuePriority]
+
+
+export const UserRole = {
+  User: 'User',
+  Admin: 'Admin'
+} as const
+
+export type UserRole = (typeof UserRole)[keyof typeof UserRole]

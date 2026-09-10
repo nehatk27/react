@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import authRouter from "./auth/auth.routes.js";
 import projectsRouter from "./projects/projects.routes.js";
 import issuesRouter from "./issues/issues.routes.js";
 
@@ -14,6 +15,7 @@ app.get("/api/health", (req, res) => {
   });
 });
 
+app.use("/auth", authRouter);
 app.use("/projects", projectsRouter);
 app.use("/issues", issuesRouter);
 
