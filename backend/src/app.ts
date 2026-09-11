@@ -1,13 +1,22 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import authRouter from "./auth/auth.routes.js";
 import projectsRouter from "./projects/projects.routes.js";
 import issuesRouter from "./issues/issues.routes.js";
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  }),
+);
+
 app.use(express.json());
+
+app.use(cookieParser());
 
 app.get("/api/health", (req, res) => {
   res.json({

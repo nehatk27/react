@@ -1,6 +1,8 @@
 import { NavLink } from "react-router";
+import { useAuth } from "../context/AuthContext";
 
 function Sidebar() {
+  const { user } = useAuth();
   return (
     <aside className="sidebar">
       <h2>Goto:</h2>
@@ -17,6 +19,8 @@ function Sidebar() {
         <NavLink to="/profile" end>
           Profile
         </NavLink>
+
+        {user?.role === "Admin" && <NavLink to="/admin">Admin</NavLink>}
       </nav>
     </aside>
   );
