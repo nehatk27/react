@@ -73,7 +73,10 @@ function IssuesSection({ initialIssues }: IssuesSectionProps) {
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       />
+      
+      <label htmlFor="status-filter">Status</label>
       <select
+        id="status-filter"
         name="status"
         value={statusFilter}
         onChange={(event) => setStatusFilter(event.target.value)}
@@ -83,7 +86,10 @@ function IssuesSection({ initialIssues }: IssuesSectionProps) {
         <option value="InProgress">InProgress</option>
         <option value="Closed">Closed</option>
       </select>
+
+      <label htmlFor="priority-filter">Priority</label>
       <select
+        id="priority-filter"
         name="priority"
         value={priorityFilter}
         onChange={(event) => setPriorityFilter(event.target.value)}
@@ -93,7 +99,10 @@ function IssuesSection({ initialIssues }: IssuesSectionProps) {
         <option value="Medium">Medium</option>
         <option value="Low">Low</option>
       </select>
+
+      <label htmlFor="sort-filter">Sort</label>
       <select
+        id="sort-filter"
         name="sort"
         value={sort}
         onChange={(event) => setSortOption(event.target.value)}
@@ -102,6 +111,7 @@ function IssuesSection({ initialIssues }: IssuesSectionProps) {
         <option value="DueDate">Sort by due date</option>
         <option value="Priority">Sort by priority</option>
       </select>
+
       <button type="button" id="clear-btn" onClick={clearFilters}>
         Clear filters
       </button>
