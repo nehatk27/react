@@ -23,6 +23,10 @@ header h1 {
   font-size: 24px;
 }
 
+header button {
+  margin-left: 16px;
+}
+
 /* Main layout */
 
 .mainSection {
@@ -278,6 +282,39 @@ button:hover {
   background-color: antiquewhite;
   font-size: 12px;
   font-weight: 600;
+}
+
+/* Authentication */
+
+.auth-page {
+  max-width: 400px;
+  margin: 40px auto;
+}
+
+.auth-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-page label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.auth-page input {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.auth-page button {
+  margin-top: 8px;
+}
+
+.auth-error {
+  color: #b42318;
 }
 
 @media (max-width: 768px) {

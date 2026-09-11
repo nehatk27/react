@@ -32,7 +32,7 @@ function LoginPage() {
   }
 
   return (
-    <main>
+    <main className="auth-page">
       <h1>Login Page</h1>
 
       <form onSubmit={handleSubmit}>
@@ -60,7 +60,7 @@ function LoginPage() {
           />
         </div>
 
-        {error && <p>{error}</p>}
+        {error && <p className="auth-error">{error}</p>}
 
         <button type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Logging in..." : "Login"}
